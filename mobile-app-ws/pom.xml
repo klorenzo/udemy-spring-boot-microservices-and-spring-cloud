@@ -9,7 +9,7 @@
 		<version>2.2.5.RELEASE</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.telusinternational</groupId>
+	<groupId>com.kevinlorenzo</groupId>
 	<artifactId>mobile-app-ws</artifactId>
 	<version>1.0</version>
 	<name>mobile-app-ws</name>

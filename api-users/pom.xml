@@ -9,7 +9,7 @@
 		<version>2.2.6.RELEASE</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.telusinternational</groupId>
+	<groupId>com.kevinlorenzo</groupId>
 	<artifactId>api-users</artifactId>
 	<version>1.0</version>
 	<name>api-users</name>
