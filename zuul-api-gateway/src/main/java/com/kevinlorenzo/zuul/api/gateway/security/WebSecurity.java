@@ -24,11 +24,13 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity httpSecurity) throws Exception {
 		httpSecurity.csrf().disable();
 		httpSecurity.headers().frameOptions().disable();
-		httpSecurity.authorizeRequests().antMatchers(HttpMethod.POST, environment.getProperty("api.h2console.url.path"))
-				.permitAll().antMatchers(HttpMethod.POST, environment.getProperty("api.registration.url.path"))
-				.permitAll().antMatchers(HttpMethod.POST, environment.getProperty("api.login.url.path")).permitAll()
-				.anyRequest().authenticated().and()
-				.addFilter(new AuthorizationFilter(authenticationManager(), environment));
+		httpSecurity.authorizeRequests()
+				.antMatchers(environment.getProperty("api.users.microservice.actuator.url.path")).permitAll()
+				.antMatchers(environment.getProperty("api.zuul.actuator.url.path")).permitAll()
+				.antMatchers(environment.getProperty("api.h2console.url.path")).permitAll()
+				.antMatchers(HttpMethod.POST, environment.getProperty("api.registration.url.path")).permitAll()
+				.antMatchers(HttpMethod.POST, environment.getProperty("api.login.url.path")).permitAll().anyRequest()
+				.authenticated().and().addFilter(new AuthorizationFilter(authenticationManager(), environment));
 		httpSecurity.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 	}
 
