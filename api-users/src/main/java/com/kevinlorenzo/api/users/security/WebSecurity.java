@@ -33,8 +33,9 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity httpSecurity) throws Exception {
 		httpSecurity.csrf().disable();
 		// httpSecurity.authorizeRequests().antMatchers("/users/**").permitAll();
-		httpSecurity.authorizeRequests().antMatchers("/**").hasIpAddress(environment.getProperty("gateway.ip")).and()
-				.addFilter(getAuthenticationFilter());
+		/* httpSecurity.authorizeRequests().antMatchers("/**").hasIpAddress(environment.getProperty("gateway.ip")).and()
+		.addFilter(getAuthenticationFilter()); */
+		httpSecurity.addFilter(getAuthenticationFilter());
 		httpSecurity.headers().frameOptions().disable();
 	}
 

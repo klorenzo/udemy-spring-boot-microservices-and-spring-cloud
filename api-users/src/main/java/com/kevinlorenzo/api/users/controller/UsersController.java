@@ -32,7 +32,8 @@ public class UsersController {
 
 	@GetMapping("/status/check")
 	public String status() {
-		return "Users Microservice running on Port " + env.getProperty("local.server.port");
+		return "Users Microservice running on Port " + env.getProperty("local.server.port") + " and Gateway IP = "
+				+ env.getProperty("gateway.ip");
 	}
 
 	@PostMapping(consumes = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE }, produces = {
