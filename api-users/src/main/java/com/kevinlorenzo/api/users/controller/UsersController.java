@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.kevinlorenzo.api.users.dto.UserDto;
 import com.kevinlorenzo.api.users.model.UserCreateRequestModel;
 import com.kevinlorenzo.api.users.model.UserCreateResponseModel;
+import com.kevinlorenzo.api.users.model.UserGetResponseModel;
 import com.kevinlorenzo.api.users.service.UsersService;
 
 @RestController
@@ -48,6 +50,13 @@ public class UsersController {
 		UserCreateResponseModel userCreateResponseModel = modelMapper.map(createdUser, UserCreateResponseModel.class);
 
 		return ResponseEntity.status(HttpStatus.CREATED).body(userCreateResponseModel);
+	}
+
+	@GetMapping(value = "/{userId}", produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
+	public ResponseEntity<UserGetResponseModel> getUserById(@PathVariable("userId") String userId) {
+		UserDto userDto = usersService.getUserDetailsById(userId);
+
+		return ResponseEntity.status(HttpStatus.OK).body(new ModelMapper().map(userDto, UserGetResponseModel.class));
 	}
 
 }

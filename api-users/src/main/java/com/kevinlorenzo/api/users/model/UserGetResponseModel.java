@@ -1,19 +1,13 @@
-package com.kevinlorenzo.api.users.dto;
+package com.kevinlorenzo.api.users.model;
 
 import java.util.List;
 
-import com.kevinlorenzo.api.users.model.AlbumResponseModel;
-
-public class UserDto implements java.io.Serializable {
-
-	private static final long serialVersionUID = 6615266867764281033L;
+public class UserGetResponseModel {
 
 	private String firstName;
 	private String lastName;
-	private String password;
 	private String email;
 	private String userId;
-	private String encryptedPassword;
 	private List<AlbumResponseModel> albums;
 
 	public String getFirstName() {
@@ -32,14 +26,6 @@ public class UserDto implements java.io.Serializable {
 		this.lastName = lastName;
 	}
 
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
 	public String getEmail() {
 		return email;
 	}
@@ -54,14 +40,6 @@ public class UserDto implements java.io.Serializable {
 
 	public void setUserId(String userId) {
 		this.userId = userId;
-	}
-
-	public String getEncryptedPassword() {
-		return encryptedPassword;
-	}
-
-	public void setEncryptedPassword(String encryptedPassword) {
-		this.encryptedPassword = encryptedPassword;
 	}
 
 	public List<AlbumResponseModel> getAlbums() {
